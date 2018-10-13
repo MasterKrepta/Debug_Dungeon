@@ -34,7 +34,11 @@ public class InputParser : MonoBehaviour
         displayWord.UpdateDisplayText(phraseToMatch);
     }
 
-    private void UpdateEnteredString(string str) {
+    private void UpdateEnteredString(string str, bool isNewWord) {
+        if (!isNewWord) {
+            displayWord.RemoveLetter();
+        }
+        
         displayWord.UpdateInput(str);
     }
 
@@ -49,7 +53,7 @@ public class InputParser : MonoBehaviour
 
         if (wordToMatch.WordDone) {
             GetNewWord();
-            UpdateEnteredString("");
+            UpdateEnteredString("", true);
             return;
         }
         if (wordToMatch.GetNextLetter() == letter && wordToMatch.WordDone == false && wordToMatch.GetNextLetter() != null) {
@@ -57,7 +61,7 @@ public class InputParser : MonoBehaviour
             //TODO update graphics to make the enemy flash
             enteredString += letter;
             wordToMatch.EnterLetter();
-            UpdateEnteredString(enteredString);
+            UpdateEnteredString(enteredString, false);
 
             //Debug.Log("Good: next letter is : " + wordToMatch.GetNextLetter());
         }
@@ -65,14 +69,14 @@ public class InputParser : MonoBehaviour
     private void CheckEnteredPhrase(Phrase phraseToMatch, char letter) {
         if (phraseToMatch.PhraseDone) {
             GetNewPhrase();
-            UpdateEnteredString("");
+            UpdateEnteredString("", true);
             return;
         }
         if (phraseToMatch.GetNextLetter() == letter && phraseToMatch.PhraseDone == false && phraseToMatch.GetNextLetter() != null) {
             //We matched;
             enteredString += letter;
             phraseToMatch.EnterLetter();
-            UpdateEnteredString(enteredString);
+            UpdateEnteredString(enteredString, false);
 
             //Debug.Log("Good: next letter is : " + wordToMatch.GetNextLetter());
         }

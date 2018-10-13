@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class WordGenerator {
+public static class WordGenerator {
 
     public static List<Word> WordList = new List<Word>();
     public static List<Phrase> PhraseList = new List<Phrase>();

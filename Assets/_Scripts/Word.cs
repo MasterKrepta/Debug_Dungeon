@@ -46,7 +46,7 @@ public class Word
     public void EnterLetter() {
         index++;
         if (index >= WordName.Length) {
-            Debug.Log("Done!!!!!!");
+            //Debug.Log("Done!!!!!!");
             WordDone = true;
         }
         //remove visual
