@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -7,15 +6,13 @@ public static class WordGenerator {
 
     public static List<Word> WordList = new List<Word>();
     public static List<Phrase> PhraseList = new List<Phrase>();
-
+   
     public static Word GetRandomWord() {
-        
-        //Debug.Log(WordList.Count);
         int index = Random.Range(0, WordList.Count);
+        Debug.Log(WordList[index].WordName);
         return WordList[index];
    }
     public static Phrase GetRandomPhrase() {
-        //Debug.Log(PhraseList.Count);
         int index = Random.Range(0, PhraseList.Count);
         return PhraseList[index];
     }
@@ -36,13 +33,11 @@ public static class WordGenerator {
 
         while ((line = file.ReadLine()) != null) {
             //TODO this will not work properly for display reasons, come up with something better
-            line = line.Replace(" ", ""); // RemoveSpaces
 
+            line = line.Replace(" ", ""); // RemoveSpaces
+            line = line.Replace("-", ""); // Remove Dashes
             Phrase newPhrase = new Phrase(line);
             PhraseList.Add(newPhrase);
         }
     }
-
-
-
 }

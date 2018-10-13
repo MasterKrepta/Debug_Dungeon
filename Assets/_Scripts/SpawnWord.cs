@@ -5,28 +5,15 @@ using UnityEngine.UI;
 using TMPro;
 public class SpawnWord : MonoBehaviour {
 
-    [SerializeField] DisplayWord displayWord;
-    [SerializeField]TMP_Text[] textDisplay;
+    public GameObject wordPrefab;
 
-	// Use this for initialization
-	void Start () {
+    public DisplayWord Spawn() {
+        GameObject wordObj = Instantiate(wordPrefab);
 
-        foreach (TMP_Text text in textDisplay) {
-            //text.enabled = false;
-        }	
-	}
+        DisplayWord displayWord= wordObj.GetComponent<DisplayWord>();
+        return displayWord;
+    }
+        
 	
-    public void SpawnWords() {
-        foreach ( TMP_Text text in textDisplay) {
-            text.enabled = true;
-            displayWord.UpdateDisplayText(wordToMatch);
-        }
-    }
-
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.S)) {
-            SpawnWords();
-        }
-    }
 }
 

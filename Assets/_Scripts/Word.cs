@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Word
 {
-
     private string _wordName;
     private int index;
     private bool wordDone;
+
 
     public Word(string word) {
         WordName = word;
@@ -45,6 +46,10 @@ public class Word
     }
     public void EnterLetter() {
         index++;
+        WordComplete();
+    }
+
+    private void WordComplete() {
         if (index >= WordName.Length) {
             //Debug.Log("Done!!!!!!");
             WordDone = true;

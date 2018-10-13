@@ -18,7 +18,6 @@ public class DisplayWord : MonoBehaviour {
         txt.text = word.WordName;
         txt.color = Color.red;
         
-
     }
 
     public void RemoveLetter() {

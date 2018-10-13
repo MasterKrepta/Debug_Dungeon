@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 4512079853083258}
   - component: {fileID: 114186123080340840}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemySingleWord
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -293,10 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4cacf4d18c00ad488fa579e7ee08c60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textDisplay:
-  - {fileID: 114706659742630492}
-  - {fileID: 114185211851445456}
-  - {fileID: 114973440339457312}
+  wordPrefab: {fileID: 0}
 --- !u!114 &114550510477942912
 MonoBehaviour:
   m_ObjectHideFlags: 1
