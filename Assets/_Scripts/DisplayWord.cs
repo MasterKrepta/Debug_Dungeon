@@ -8,14 +8,15 @@ using TMPro;
 
 public class DisplayWord : MonoBehaviour {
 
-    public Text text;
+    public Transform parent;
+
     public float fallSpeed = 1f;
 
-    //TMP_Text text;
+    TMP_Text text;
 
     private void Awake() {
-        //text = GetComponent<TMP_Text>();
-        text = GetComponent<Text>();
+        text = GetComponent<TMP_Text>();
+        parent = this.transform.parent.parent;
     }
     internal void PlacePhrase(string phrase) {
         throw new NotImplementedException();
@@ -33,6 +34,7 @@ public class DisplayWord : MonoBehaviour {
     public void RemoveWord() {
         //TODO play some special graphic
         Destroy(gameObject);
+        UpdateWordCount();
     }
 
     public void RemoveLetter() {
@@ -40,8 +42,14 @@ public class DisplayWord : MonoBehaviour {
         text.color = Color.green;
     }
 
-    private void Update() {
-        transform.Translate(0f, -fallSpeed * Time.deltaTime, 0f);
+    //This SHOULD  update the canvas count on the enemy, so we can let it know when all the words
+    //have been cleared so we can delete the enemy
+    public void UpdateWordCount() {
+        parent.GetComponent<SpawnTimer>().DecreaseWordCount();
     }
+
+    //private void Update() {
+    //    transform.Translate(0f, -fallSpeed * Time.deltaTime, 0f);
+    //}
 }
 

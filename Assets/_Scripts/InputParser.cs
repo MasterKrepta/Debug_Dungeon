@@ -10,6 +10,7 @@ public class InputParser : MonoBehaviour{
     public List<Phrase> phrases;
 
     public SpawnWord spawner;
+    public SpawnWave spawnWave;
 
     private  bool hasActiveWord;
     private Word activeWord;
@@ -18,30 +19,28 @@ public class InputParser : MonoBehaviour{
     // Use this for initialization
     void Start() {
         spawner = GetComponent<SpawnWord>();
+        spawnWave = GetComponent<SpawnWave>();
         WordGenerator.PopulateWordList();
         WordGenerator.PopulatePhraseList();
-    
-
         //TODO phrases dont work properly, needs debugging
         //GetNewPhrase();
     }
 
-    public void AddWord() {
-        Word newWord = new Word(WordGenerator.GetRandomWord(), spawner.Spawn());
-        Debug.Log(newWord.word);
+    public void AddWord(Transform canvas) {
+        Word newWord = new Word(WordGenerator.GetRandomWord(), spawner.Spawn(canvas));
         words.Add(newWord);
-        
     }
 
-    private void GetNewPhrase() {
-        Phrase newPhrase = new Phrase(WordGenerator.GetRandomPhrase(), spawner.Spawn());
+    private void GetNewPhrase(Transform canvas) {
+        Phrase newPhrase = new Phrase(WordGenerator.GetRandomPhrase(), spawner.Spawn(canvas));
         phrases.Add(newPhrase);
     }
 
-    
-
     //GET THE INPUT HERE 
     void Update() {
+        if (Input.GetMouseButtonDown(0)) {
+            spawnWave.SpawnNewEnemies();
+        }
         foreach (char letter in Input.inputString) {
             InputLetter(letter);
             //CheckEnteredPhrase(phraseToMatch, letter);
@@ -49,7 +48,6 @@ public class InputParser : MonoBehaviour{
     }
 
     public void InputLetter(char letter) {
-
         if (hasActiveWord) {
             if (activeWord.GetNextLetter() == letter) {
                 //We matched;
@@ -59,9 +57,9 @@ public class InputParser : MonoBehaviour{
         }
         else {
             foreach (Word word in words) {
+                
                 if (word.GetNextLetter() == letter) {
                     activeWord = word;
-                    Debug.Log(activeWord.word + " is the active word");
                     hasActiveWord = true;
                     word.EnterLetter();
                     break;
@@ -78,6 +76,4 @@ public class InputParser : MonoBehaviour{
     private void CheckEnteredPhrase(Phrase phraseToMatch, char letter) {
         
     }
-
-
 }
