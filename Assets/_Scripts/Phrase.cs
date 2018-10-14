@@ -4,50 +4,33 @@ using UnityEngine;
 
 public class Phrase  {
 
-    private string _phraseName;
+    private string phrase;
     private int index;
-    private bool phraseDone;
 
-    public Phrase(string phrase) {
-        PhraseName = phrase;
+    DisplayWord display;
+
+    public Phrase(string phrase, DisplayWord display) {
+        this.phrase = phrase;
         index = 0;
-        PhraseDone = false;
-    }
 
-    public string PhraseName {
-        get {
-            return _phraseName;
-        }
-
-        set {
-            _phraseName = value;
-        }
-    }
-
-    public bool PhraseDone {
-        get {
-            return phraseDone;
-        }
-
-        set {
-            phraseDone = value;
-        }
+        this.display = display;
+        display.PlacePhrase(phrase);
     }
 
     public char GetNextLetter() {
-        if (index >= PhraseName.Length) {
-            Debug.Log("Done!!!!!!");
-            PhraseDone = true;
-
-        }
-        return PhraseName[index];
+        return phrase[index];
     }
     public void EnterLetter() {
         index++;
-        if (index >= PhraseName.Length) {
-            Debug.Log("Done!!!!!!");
-            PhraseDone = true;
-        }
-        //remove visual
+        PhraseComplete();
+    }
+
+    public bool PhraseComplete() {
+        bool phraseDone = (index >= phrase.Length);
+        if (phraseDone)
+            display.RemovePhrase();
+
+        return phraseDone;
+
     }
 }

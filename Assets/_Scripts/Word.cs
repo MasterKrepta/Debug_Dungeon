@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,55 +6,42 @@ using UnityEngine;
 [System.Serializable]
 public class Word
 {
-    private string _wordName;
+    public string word;
     private int index;
-    private bool wordDone;
+    public string formated;
 
+    DisplayWord display;
 
-    public Word(string word) {
-        WordName = word;
+    public Word(string word, DisplayWord display) {
+        this.word = word;
         index = 0;
-        WordDone = false;
+        formated = FormatText(word);
+        this.display = display;
+        display.PlaceWord(word);
     }
 
-    public string WordName {
-        get {
-            return _wordName;
-        }
-
-        set {
-            _wordName = value;
-        }
-    }
-
-    public bool WordDone {
-        get {
-            return wordDone;
-        }
-
-        set {
-            wordDone = value;
-        }
+    private string FormatText(string word) {
+        string formated = word;
+        formated = formated.Replace(" ", ""); // RemoveSpaces
+        formated = formated.Replace("-", ""); // Remove Dashes
+        return formated;
     }
 
     public char GetNextLetter() {
-        if (index >= WordName.Length) {
-            Debug.Log("Done!!!!!!");
-            WordDone = true;
-            
-        }
-        return WordName[index];
+        
+        return word[index];
     }
     public void EnterLetter() {
         index++;
-        WordComplete();
+        display.RemoveLetter();
     }
 
-    private void WordComplete() {
-        if (index >= WordName.Length) {
-            //Debug.Log("Done!!!!!!");
-            WordDone = true;
-        }
-        //remove visual
+    public bool WordComplete() {
+        bool wordDone = (index >= word.Length);
+        if (wordDone)
+            display.RemoveWord();
+
+        return wordDone;
+                
     }
 }

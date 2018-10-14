@@ -4,15 +4,15 @@ using UnityEngine;
 
 public static class WordGenerator {
 
-    public static List<Word> WordList = new List<Word>();
-    public static List<Phrase> PhraseList = new List<Phrase>();
+    public static List<string> WordList = new List<string>();
+    public static List<string> PhraseList = new List<string>();
    
-    public static Word GetRandomWord() {
+    public static string GetRandomWord() {
         int index = Random.Range(0, WordList.Count);
-        Debug.Log(WordList[index].WordName);
+        
         return WordList[index];
    }
-    public static Phrase GetRandomPhrase() {
+    public static string GetRandomPhrase() {
         int index = Random.Range(0, PhraseList.Count);
         return PhraseList[index];
     }
@@ -22,7 +22,7 @@ public static class WordGenerator {
         StreamReader file = new StreamReader("Assets/Data/Random Words.txt");
 
         while ((line = file.ReadLine()) != null) {
-            Word newWord = new Word(line);
+            string newWord = line;
             WordList.Add(newWord);
         }
     }
@@ -36,7 +36,7 @@ public static class WordGenerator {
 
             line = line.Replace(" ", ""); // RemoveSpaces
             line = line.Replace("-", ""); // Remove Dashes
-            Phrase newPhrase = new Phrase(line);
+            string newPhrase = line;
             PhraseList.Add(newPhrase);
         }
     }
