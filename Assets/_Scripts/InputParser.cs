@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class InputParser : MonoBehaviour{
 
-
     public  List<Word> words;
     public List<Phrase> phrases;
 
@@ -13,8 +12,7 @@ public class InputParser : MonoBehaviour{
     public SpawnWave spawnWave;
 
     private  bool hasActiveWord;
-    private Word activeWord;
-    
+    public Word activeWord;
     
     // Use this for initialization
     void Start() {
@@ -39,7 +37,7 @@ public class InputParser : MonoBehaviour{
     //GET THE INPUT HERE 
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
-            spawnWave.SpawnNewEnemies();
+//            spawnWave.SpawnNewEnemies();
         }
         foreach (char letter in Input.inputString) {
             InputLetter(letter);
