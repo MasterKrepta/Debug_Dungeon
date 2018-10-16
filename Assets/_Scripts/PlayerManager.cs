@@ -32,7 +32,7 @@ public class PlayerManager : MonoBehaviour, IHasHealth {
 
     // Use this for initialization
     void Start () {
-        MaxHealth = 10;
+        MaxHealth = 50;
         CurrentHealth = MaxHealth;
 	}
 	

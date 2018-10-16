@@ -7,7 +7,15 @@ public class UdemyBoss : MonoBehaviour, IHasHealth {
     public float MaxHealth {get; set; }
     public float CurrentHealth { get; set; }
 
+    PlayerManager player;
     SpawnWave spawnWave;
+
+
+    [Header("Attacking")]
+    [Space(10)]
+    [SerializeField] float attackTime = 3f;
+    [SerializeField] float damage = 1f;
+    float timeSinceLastAttack = 0;
 
     public void Damage(float dmg) {
         CurrentHealth -= dmg;
@@ -32,6 +40,7 @@ public class UdemyBoss : MonoBehaviour, IHasHealth {
     // Use this for initialization
     void Start () {
         spawnWave = GameObject.FindObjectOfType<SpawnWave>();
+        player = FindObjectOfType<PlayerManager>();
         healthBar = GetComponentInChildren<Slider>();
         MaxHealth = 10;
         CurrentHealth = MaxHealth;
@@ -46,5 +55,18 @@ public class UdemyBoss : MonoBehaviour, IHasHealth {
             Destroy(enemy.gameObject);
         }
         //spawnWave.enemyCount = 1;
+    }
+
+    private void Update() {
+        UpdateTimer();
+    }
+    private void UpdateTimer() {
+        if (timeSinceLastAttack < attackTime) {
+            timeSinceLastAttack += Time.deltaTime;
+        }
+        else {
+            timeSinceLastAttack = 0;
+            player.Damage(damage);
+        }
     }
 }

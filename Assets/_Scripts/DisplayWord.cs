@@ -33,6 +33,7 @@ public class DisplayWord : MonoBehaviour {
 
     public void RemoveWord() {
         //TODO play some special graphic
+
         Destroy(gameObject);
         UpdateWordCount();
     }

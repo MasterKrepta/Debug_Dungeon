@@ -67,7 +67,6 @@ public  class SpawnWave: MonoBehaviour {
     }
 
     void SpawnUdemyBoss() {
-        Debug.Log("Boss Spawned:"  +Time.deltaTime);
        // enemyCount = 1;
         currentTime = 0;
         Transform go = Instantiate(UdemyPrefab, Vector3.zero, Quaternion.identity); // THIs creates one on each without overlap

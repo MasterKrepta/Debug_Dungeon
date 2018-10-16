@@ -1,6 +1,39 @@
+game jam
+getcomponent
+boxcollider
+rigidbody
+raycasthit
+shader
+textmesh
+debug
+research
+program
+bootcamp
+glossary
+agile
+ajax
+java
+javascript
+framework
+json
+stack
+html
+css
+php
+algorithm
+apprenticeship
+asynchronous
+bootstrap
+database
+inheritance
+framework
+open-source
+interface
+synchronous
+syntax
+whiteboarding
 shivering
 disgusting
-game jam
 smash
 uncle
 calculating
@@ -16,7 +49,7 @@ deer
 scrub
 glistening
 greet
-ill-informed
+ill informed
 release
 sink
 pump

@@ -13,9 +13,12 @@ public class InputParser : MonoBehaviour{
 
     private  bool hasActiveWord;
     public Word activeWord;
+
+    public List<string> possiblewords;
     
     // Use this for initialization
     void Start() {
+        possiblewords = WordGenerator.WordList;
         spawner = GetComponent<SpawnWord>();
         spawnWave = GetComponent<SpawnWave>();
         WordGenerator.PopulateWordList();
@@ -51,6 +54,11 @@ public class InputParser : MonoBehaviour{
                 //We matched;
                 activeWord.EnterLetter();
                 //TODO update graphics to make the enemy flash
+            }
+            else {
+                //We made an error
+                //TODO display something visual to indicate the mistake
+                ScoreManager.UpdateErrors();
             }
         }
         else {

@@ -8,38 +8,39 @@ public class Word
 {
     public string word;
     private int index;
-    public string formated;
+    
 
     DisplayWord display;
 
     public Word(string word, DisplayWord display) {
         this.word = word;
         index = 0;
-        formated = FormatText(word);
+        
         this.display = display;
         display.PlaceWord(word);
     }
-
-    private string FormatText(string word) {
-        string formated = word;
-        formated = formated.Replace(" ", ""); // RemoveSpaces
-        formated = formated.Replace("-", ""); // Remove Dashes
-        return formated;
-    }
-
+    
     public char GetNextLetter() {
-        
+        char next = word[index];
+        if (next == ' ' || next == '-' || next == '\'' || next == ',') {
+            index++; // if its a space or dash
+            display.RemoveLetter();
+        }
         return word[index];
     }
     public void EnterLetter() {
         index++;
         display.RemoveLetter();
+        
     }
 
     public bool WordComplete() {
         bool wordDone = (index >= word.Length);
-        if (wordDone)
+        if (wordDone) {
+            ScoreManager.UpdateClearedWords(this);
             display.RemoveWord();
+        }
+            
 
         return wordDone;
                 

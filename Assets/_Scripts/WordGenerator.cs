@@ -19,11 +19,12 @@ public static class WordGenerator {
 
     public static void PopulateWordList() {
         string line;
-        StreamReader file = new StreamReader("Assets/Data/Random Words.txt");
+        //StreamReader file = new StreamReader("Assets/Data/Random Words.txt");
+        StreamReader file = new StreamReader("Assets/Data/Random Phrases.txt");
 
         while ((line = file.ReadLine()) != null) {
             string newWord = line;
-            WordList.Add(newWord);
+            WordList.Add(newWord.ToLower());
         }
     }
 
@@ -37,7 +38,7 @@ public static class WordGenerator {
             line = line.Replace(" ", ""); // RemoveSpaces
             line = line.Replace("-", ""); // Remove Dashes
             string newPhrase = line;
-            PhraseList.Add(newPhrase);
+            PhraseList.Add(newPhrase.ToLower());
         }
     }
 }
