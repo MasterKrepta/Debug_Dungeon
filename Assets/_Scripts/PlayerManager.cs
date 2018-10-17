@@ -12,6 +12,10 @@ public class PlayerManager : MonoBehaviour, IHasHealth {
 
     
     public void Damage(float dmg) {
+        if (CurrentHealth <= 0) {
+            //Prevent duplicate calls
+            return;
+        }
         CurrentHealth -= dmg;
         UpdateDamageUI();
         if (CurrentHealth <= 0) {
@@ -26,6 +30,7 @@ public class PlayerManager : MonoBehaviour, IHasHealth {
 
     public void Die() {
         Debug.Log("We died!");
+        ScoreManager.GetPercentages();
         //TODO show final score
         //
     }

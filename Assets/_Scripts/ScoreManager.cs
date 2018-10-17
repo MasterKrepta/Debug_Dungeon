@@ -22,9 +22,16 @@ public static class ScoreManager {
     }
 
     public static void GetPercentages() {
-        //TODO calculate errors 
-        percentage = (charsEntered - errors )/ charsEntered; //Correct / Total
+        //calculate errors 
+        float percentRight = charsEntered - errors;
+
+        percentage = percentRight/ charsEntered; //Correct / Total
+
+        //Format as a percentage
+        percentage *= 100; //move decimal
+
         Debug.Log("You made: " + errors + " Errors");
+        Debug.Log("You entered: " + charsEntered + " Characters");
         Debug.Log("You Cleared: " + wordsCleared + " Words");
         Debug.Log("Percentage: " + percentage);
     }

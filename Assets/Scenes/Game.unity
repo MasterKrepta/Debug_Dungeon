@@ -684,7 +684,6 @@ MonoBehaviour:
   spawnWave: {fileID: 0}
   activeWord:
     word: 
-  possiblewords: []
 --- !u!4 &1651129371
 Transform:
   m_ObjectHideFlags: 0

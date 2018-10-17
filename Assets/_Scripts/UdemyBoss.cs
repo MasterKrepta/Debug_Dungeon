@@ -33,7 +33,7 @@ public class UdemyBoss : MonoBehaviour, IHasHealth {
     public void Die() {
         //TODO update score and move to next wave
         Debug.Log("bossDied");
-        spawnWave.ClearBossWave();
+        spawnWave.ClearBossWave(player);
         spawnWave.SpawnNewEnemies();
     }
 

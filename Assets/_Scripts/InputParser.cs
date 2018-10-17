@@ -14,17 +14,18 @@ public class InputParser : MonoBehaviour{
     private  bool hasActiveWord;
     public Word activeWord;
 
-    public List<string> possiblewords;
+    //!this was for testing
+    //public List<string> possiblewords;
     
     // Use this for initialization
     void Start() {
-        possiblewords = WordGenerator.WordList;
+        //!this was for testing
+        //possiblewords = WordGenerator.WordList;
         spawner = GetComponent<SpawnWord>();
         spawnWave = GetComponent<SpawnWave>();
         WordGenerator.PopulateWordList();
         WordGenerator.PopulatePhraseList();
-        //TODO phrases dont work properly, needs debugging
-        //GetNewPhrase();
+        
     }
 
     public void AddWord(Transform canvas) {
@@ -32,11 +33,7 @@ public class InputParser : MonoBehaviour{
         words.Add(newWord);
     }
 
-    private void GetNewPhrase(Transform canvas) {
-        Phrase newPhrase = new Phrase(WordGenerator.GetRandomPhrase(), spawner.Spawn(canvas));
-        phrases.Add(newPhrase);
-    }
-
+    
     //GET THE INPUT HERE 
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
@@ -75,11 +72,9 @@ public class InputParser : MonoBehaviour{
 
         if (hasActiveWord && activeWord.WordComplete()) {
             hasActiveWord = false;
+            activeWord = null;
             words.Remove(activeWord);
         }
     }
 
-    private void CheckEnteredPhrase(Phrase phraseToMatch, char letter) {
-        
-    }
 }

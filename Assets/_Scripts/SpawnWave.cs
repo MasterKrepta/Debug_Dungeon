@@ -44,6 +44,7 @@ public  class SpawnWave: MonoBehaviour {
     }
 
     public void SpawnNewEnemies() {
+        
       //  Debug.Log("Spawning new enemies " + enemyCount);
        // enemyCount = 0;
         //Check for boss wave
@@ -72,7 +73,10 @@ public  class SpawnWave: MonoBehaviour {
         Transform go = Instantiate(UdemyPrefab, Vector3.zero, Quaternion.identity); // THIs creates one on each without overlap
         enemiesAlive.Add(go.gameObject);
     }
-    public void ClearBossWave() {
+    public void ClearBossWave(PlayerManager player) {
+        //Clear any active words to prevent errors
+        player.GetComponent<InputParser>().words.Clear();
+        player.GetComponent<InputParser>().activeWord = null;
         currentTime = 0;
     }
 }
