@@ -49,8 +49,5 @@ public class DisplayWord : MonoBehaviour {
         parent.GetComponent<SpawnTimer>().DecreaseWordCount();
     }
 
-    //private void Update() {
-    //    transform.Translate(0f, -fallSpeed * Time.deltaTime, 0f);
-    //}
 }
 

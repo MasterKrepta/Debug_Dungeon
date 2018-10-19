@@ -44,7 +44,7 @@ public class SpawnTimer : MonoBehaviour {
         if (isBoss == true) {
             UdemyBoss boss = this.GetComponent<UdemyBoss>();
             //? do we need this 
-           // spawnWave.enemyCount = 1;
+           
             boss.Damage(1);
 
             if (boss.CurrentHealth > 0) {
@@ -54,7 +54,6 @@ public class SpawnTimer : MonoBehaviour {
             else {
                 Destroy(gameObject);
                 spawnWave.EnemyKilled(this.gameObject);
-            //     if (spawnWave.enemyCount <= 0) {
                 if (spawnWave.enemiesAlive.Count == 0) {
                     spawnWave.SpawnNewEnemies();
                 }
@@ -65,13 +64,10 @@ public class SpawnTimer : MonoBehaviour {
         if (wordCount <= 0) {
             Destroy(gameObject);
             spawnWave.EnemyKilled(this.gameObject);
-            // if (spawnWave.enemyCount <= 0) {
             if (spawnWave.enemiesAlive.Count == 0) {
                 spawnWave.SpawnNewEnemies();
             }
         }
-
-        //TODO update score
     }
 
     bool IsBoss() {

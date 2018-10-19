@@ -24,8 +24,7 @@ public class InputParser : MonoBehaviour{
         spawner = GetComponent<SpawnWord>();
         spawnWave = GetComponent<SpawnWave>();
         WordGenerator.PopulateWordList();
-        WordGenerator.PopulatePhraseList();
-        
+      
     }
 
     public void AddWord(Transform canvas) {
@@ -33,15 +32,11 @@ public class InputParser : MonoBehaviour{
         words.Add(newWord);
     }
 
-    
     //GET THE INPUT HERE 
     void Update() {
-        if (Input.GetMouseButtonDown(0)) {
-//            spawnWave.SpawnNewEnemies();
-        }
+
         foreach (char letter in Input.inputString) {
             InputLetter(letter);
-            //CheckEnteredPhrase(phraseToMatch, letter);
         }
     }
 
@@ -72,7 +67,7 @@ public class InputParser : MonoBehaviour{
 
         if (hasActiveWord && activeWord.WordComplete()) {
             hasActiveWord = false;
-            activeWord = null;
+            //? Remove the active word from the list - reset it as null not required
             words.Remove(activeWord);
         }
     }

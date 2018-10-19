@@ -12,14 +12,10 @@ public static class WordGenerator {
         
         return WordList[index];
    }
-    public static string GetRandomPhrase() {
-        int index = Random.Range(0, PhraseList.Count);
-        return PhraseList[index];
-    }
+
 
     public static void PopulateWordList() {
         string line;
-        //StreamReader file = new StreamReader("Assets/Data/Random Words.txt");
         StreamReader file = new StreamReader("Assets/Data/Random Phrases.txt");
 
         while ((line = file.ReadLine()) != null) {
@@ -28,17 +24,5 @@ public static class WordGenerator {
         }
     }
 
-    public static void PopulatePhraseList() {
-        string line;
-        StreamReader file = new StreamReader("Assets/Data/Random Phrases.txt");
 
-        while ((line = file.ReadLine()) != null) {
-            //TODO this will not work properly for display reasons, come up with something better
-
-            line = line.Replace(" ", ""); // RemoveSpaces
-            line = line.Replace("-", ""); // Remove Dashes
-            string newPhrase = line;
-            PhraseList.Add(newPhrase.ToLower());
-        }
-    }
 }

@@ -10,7 +10,6 @@ public class UdemyBoss : MonoBehaviour, IHasHealth {
     PlayerManager player;
     SpawnWave spawnWave;
 
-
     [Header("Attacking")]
     [Space(10)]
     [SerializeField] float attackTime = 3f;
@@ -31,7 +30,6 @@ public class UdemyBoss : MonoBehaviour, IHasHealth {
     }
 
     public void Die() {
-        //TODO update score and move to next wave
         Debug.Log("bossDied");
         spawnWave.ClearBossWave(player);
         spawnWave.SpawnNewEnemies();
@@ -44,17 +42,6 @@ public class UdemyBoss : MonoBehaviour, IHasHealth {
         healthBar = GetComponentInChildren<Slider>();
         MaxHealth = 10;
         CurrentHealth = MaxHealth;
-
-        //ClearAllEnemies();
-    }
-
-    private void ClearAllEnemies() {
-        Enemy[] enemies = FindObjectsOfType<Enemy>();
-
-        foreach (Enemy enemy in enemies) {
-            Destroy(enemy.gameObject);
-        }
-        //spawnWave.enemyCount = 1;
     }
 
     private void Update() {
