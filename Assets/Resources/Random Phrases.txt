@@ -1,0 +1,90 @@
+coding your own games
+cant wait to see what you make with this
+null referance exception
+off by one error
+bits and bobs
+what could possibly go wrong?
+online learning
+global game jam
+github
+visual studio
+krita
+adobe photoshop
+bosca ceoil
+substance painter
+blender 3d
+web gl
+trello
+game maker
+evernote
+discord
+waka time
+incompetech
+kenny assets
+open game art
+vertex shader
+fragment shader
+vector3
+vector2
+rigidbody
+oncollisionenter
+ontriggerenter
+unity pro
+open source
+made with unity
+twitter
+hashtags
+indie game dev
+asset store
+free assets
+paid assets
+ludum dare
+ad block
+render pipeline
+the theme always sucks
+like and subscribe
+getcomponent
+findobjectoftype
+happy accident
+index out of range
+special discount
+refactor
+comment
+debug.log
+fire of belief
+beneath the skin
+they have no choice!
+packt publishing
+rigidbody
+raycasthit
+shader
+textmesh
+debug
+research
+program
+bootcamp
+glossary
+agile
+ajax
+java
+javascript
+framework
+json
+stack
+html
+css
+php
+algorithm
+apprenticeship
+asynchronous
+bootstrap
+database
+inheritance
+framework
+open-source
+interface
+synchronous
+syntax
+whiteboarding
+blood sweat and tears
+playground

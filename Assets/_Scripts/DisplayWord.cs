@@ -9,6 +9,7 @@ using TMPro;
 public class DisplayWord : MonoBehaviour {
 
     public Transform parent;
+    AudioSource audio;
 
     public float fallSpeed = 1f;
 
@@ -16,25 +17,23 @@ public class DisplayWord : MonoBehaviour {
 
     private void Awake() {
         text = GetComponent<TMP_Text>();
+        audio = GetComponent<AudioSource>();
         parent = this.transform.parent.parent;
     }
-    internal void PlacePhrase(string phrase) {
-        throw new NotImplementedException();
-    }
+
 
     public void PlaceWord(string word) {
         text.text = word;
         text.color = Color.red;
     }
 
-    public void RemovePhrase() {
-        throw new NotImplementedException();
-    }
+
 
     public void RemoveWord() {
         //TODO play some special graphic
-
-        Destroy(gameObject);
+        audio.Play();
+        Invoke("DestroyAfterAudio", 1);
+        
         UpdateWordCount();
     }
 
@@ -43,11 +42,13 @@ public class DisplayWord : MonoBehaviour {
         text.color = Color.green;
     }
 
-    //This SHOULD  update the canvas count on the enemy, so we can let it know when all the words
-    //have been cleared so we can delete the enemy
+    
     public void UpdateWordCount() {
         parent.GetComponent<SpawnTimer>().DecreaseWordCount();
     }
 
+    private void DestroyAfterAudio() {
+        Destroy(gameObject);
+    }
 }
 

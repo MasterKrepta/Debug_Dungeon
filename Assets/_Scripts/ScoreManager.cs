@@ -5,7 +5,7 @@ using UnityEngine;
 public static class ScoreManager {
 
     public static int wordsCleared = 0;
-    private static int charsEntered = 0;
+    public static int charsEntered = 0;
     public static int errors = 0;
     public static float percentage = 100;
 
@@ -30,10 +30,10 @@ public static class ScoreManager {
         //Format as a percentage
         percentage *= 100; //move decimal
 
-        Debug.Log("You made: " + errors + " Errors");
-        Debug.Log("You entered: " + charsEntered + " Characters");
-        Debug.Log("You Cleared: " + wordsCleared + " Words");
-        Debug.Log("Percentage: " + percentage);
+        //Debug.Log("You made: " + errors + " Errors");
+        //Debug.Log("You entered: " + charsEntered + " Characters");
+        //Debug.Log("You Cleared: " + wordsCleared + " Words");
+        //Debug.Log("Percentage: " + percentage);
     }
 
 }

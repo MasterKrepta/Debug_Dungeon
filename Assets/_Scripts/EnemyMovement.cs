@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour {
 
     PlayerManager player;
-
+    AudioSource audio;
     Vector3 startingPos;
     enum direction {LEFT, RIGHT, DOWN};
     direction dir = direction.DOWN;
@@ -25,6 +25,7 @@ public class EnemyMovement : MonoBehaviour {
     float timeSinceLastAttack = 0;
     // Use this for initialization
     void Start () {
+        audio = GetComponent<AudioSource>();
         player = FindObjectOfType<PlayerManager>();
         startingPos = transform.position;
         DetermineDirection();
@@ -66,6 +67,7 @@ public class EnemyMovement : MonoBehaviour {
         }
         else {
             timeSinceLastAttack = 0;
+            audio.Play();
             player.Damage(damage);
         }
     }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class InputParser : MonoBehaviour{
 
     public  List<Word> words;
-    public List<Phrase> phrases;
+    
 
     public SpawnWord spawner;
     public SpawnWave spawnWave;
@@ -18,7 +18,7 @@ public class InputParser : MonoBehaviour{
     //public List<string> possiblewords;
     
     // Use this for initialization
-    void Start() {
+    void Awake() {
         //!this was for testing
         //possiblewords = WordGenerator.WordList;
         spawner = GetComponent<SpawnWord>();

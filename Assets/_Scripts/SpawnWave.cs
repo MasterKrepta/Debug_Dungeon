@@ -26,7 +26,7 @@ public  class SpawnWave: MonoBehaviour {
         currentTime += Time.deltaTime;
     }
     private void Init() {
-        udemySpawnTime = Random.Range(5, 10);
+        udemySpawnTime = Random.Range(45, 90);
     }
 
     public  void EnemySpawned(GameObject enemy) {

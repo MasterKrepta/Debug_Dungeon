@@ -62,8 +62,10 @@ public class SpawnTimer : MonoBehaviour {
         }
         //If Not Boss
         if (wordCount <= 0) {
-            Destroy(gameObject);
+            GetComponentInChildren<SpriteRenderer>().enabled = false;
             spawnWave.EnemyKilled(this.gameObject);
+            Invoke("DestroyAfterAudio", 1);
+            
             if (spawnWave.enemiesAlive.Count == 0) {
                 spawnWave.SpawnNewEnemies();
             }
@@ -77,5 +79,11 @@ public class SpawnTimer : MonoBehaviour {
         else {
             return false;
         }
+    }
+
+    void DestroyAfterAudio() {
+        
+        Destroy(gameObject);
+        
     }
 }

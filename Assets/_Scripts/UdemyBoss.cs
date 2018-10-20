@@ -9,6 +9,8 @@ public class UdemyBoss : MonoBehaviour, IHasHealth {
 
     PlayerManager player;
     SpawnWave spawnWave;
+    AudioSource mainMusic;
+    
 
     [Header("Attacking")]
     [Space(10)]
@@ -30,17 +32,21 @@ public class UdemyBoss : MonoBehaviour, IHasHealth {
     }
 
     public void Die() {
-        Debug.Log("bossDied");
+        mainMusic.Play();
         spawnWave.ClearBossWave(player);
         spawnWave.SpawnNewEnemies();
     }
 
     // Use this for initialization
     void Start () {
+        mainMusic = GetComponent<AudioSource>();
+        
+        mainMusic.Stop();
+        this.GetComponent<AudioSource>().Play();
         spawnWave = GameObject.FindObjectOfType<SpawnWave>();
         player = FindObjectOfType<PlayerManager>();
         healthBar = GetComponentInChildren<Slider>();
-        MaxHealth = 10;
+        MaxHealth = 6;
         CurrentHealth = MaxHealth;
     }
 
@@ -53,6 +59,7 @@ public class UdemyBoss : MonoBehaviour, IHasHealth {
         }
         else {
             timeSinceLastAttack = 0;
+            
             player.Damage(damage);
         }
     }

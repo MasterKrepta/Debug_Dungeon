@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour, IHasHealth {
 
@@ -29,9 +30,9 @@ public class PlayerManager : MonoBehaviour, IHasHealth {
     }
 
     public void Die() {
-        Debug.Log("We died!");
         ScoreManager.GetPercentages();
-        //TODO show final score
+        SceneManager.LoadScene(2);
+
         //
     }
 
